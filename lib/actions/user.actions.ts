@@ -51,12 +51,13 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
 }
 
 // DELETE
-export async function deleteUser(clerkId: string, userId: string ) {
+export async function deleteUser(clerkId: string) {
   try {
     await connectToDatabase();
 
     // Find user to delete
     const userToDelete = await User.findOne({clerkId});
+    
     if(!userToDelete){
       throw new Error("User not found ");
     }

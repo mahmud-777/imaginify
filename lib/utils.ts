@@ -11,7 +11,7 @@ export function cn(...inputs: ClassValue[]) {
 export const handleError = (error: unknown) => {
   if(error instanceof Error){
     console.error(error.message);
-    throw new Error(`Error: ${error.message}`);
+    throw new Error(`Error: ${error}`);
   }else if (typeof error === "string"){
     console.error(error);
     throw new Error(`Error: ${error}`);
@@ -129,7 +129,7 @@ export const download = (url: string, filename: string) => {
       a.click()
     })
     .catch((error) => console.log({ error }))
-}
+};
 
 // DEEP MERGE OBJECTS
 export const deepMergeObjects = (obj1: any, obj2: any) => {

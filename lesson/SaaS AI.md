@@ -1,4 +1,4 @@
-Time= 34.38 - 1.02.24 - 1.18.55 - 1.32
+Time= 34.38 - 1.02.24 - 1.18.55 - 1.32 - 2.16 - 2.24 - 2.45 - 3.09 -3.23 - 3.34 3.47 - 3.58 - 4.06 - 4.27 profile page -
 
 create project
 imaginify =>
@@ -91,3 +91,111 @@ go to Customization =>
 Branding =>
 Logo
 upload image
+
+# Cloudinary setup
+
+cloudinary.com
+login
+
+# Set Up Your Work Environment
+
+npm i next-cloudinary
+
+View Credentials = click
+Cloud name
+API key
+API secret
+copy and past to .env.local
+
+Settings => Upload => Add upload preset
+=> Storage and Access =>
+Upload preset name = sky_imaginify
+Signin Mode: unsigned
+Folder = imaginify
+
+=> Media analysis and AI =>
+Categorization =>
+Google Auto Tagging = checked
+
+Auto tagging 0.51
+
+Save = click
+
+=> dashboard => Add-ons
+Cloudinary AI Background Removal = Free plan
+Google Auto Tagging = Free plan
+
+# Edit next.config.mjs
+
+```
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+      }
+    ]
+  }
+}
+```
+
+# Stripe.com => login
+
+Developers => API keys
+Publishable key -
+Secret key -
+
+open .env file and past
+
+```
+
+# Strip
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_cbiaRw48m7yvm796C2qV3mjf
+STRIPE_SECRET_KEY=sk_test_YG0WuNV1DCyZYuNt8XRDT8Lc
+
+```
+
+npm install stripe @stripe/stripe-js
+
+lib => actions => transaction.action.ts
+
+```
+export async function checkoutCredits(transaction: CheckoutTransactionParams) {}
+
+export async function createTransaction(transaction: CreateTransactionParams) {}
+```
+
+dashboard.stripe.com =>
+Developers => Webhooks => Add an endpoint =>
+
+Endpoint URL = https://imaginify-lac.vercel.app/api/webhooks/stripe
+
+Listen to - Events on your account - checked
+
+Select events to listen to = + Select event =>
+Select events to send =>
+checkout.session.completed = checked
+
+Add events =>
+
+Add endpoint
+
+copy Signing secret and past to .env file
+
+```
+STRIPE_WEBHOOK_SECRET=whsec_wYHvsQLjvLejiudjxKeWYhYr5LxBbC5A
+```
+
+app => api => webhooks => stripe => route.ts
+
+```
+
+```
+
+app => (root) => credits => page.tsx
+
+```
+
+```

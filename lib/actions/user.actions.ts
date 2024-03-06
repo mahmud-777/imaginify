@@ -69,8 +69,29 @@ export async function deleteUser(clerkId: string) {
     return deleteUser ? JSON.parse(JSON.stringify(deleteUser)) : null;
     
   } catch (error) {
-    handleError(error);
+    handleError(error);    
+  }  
+}
+
+// USE CREDITS
+
+export async function updateCredits(userId: string, creditFee: number) {
+  try {
+    await connectToDatabase();
+
+    // { $inc: { credits: creditFee }},
+    const updatedUserCredits = await User.findOneAndUpdate(
+      { _id: userId},
+      { $inc: { creditBalance: creditFee }},
+      { new: true},
+      )
+
+    if(!updatedUserCredits) throw new Error("User credits update failed");
+
+    return JSON.parse(JSON.stringify(updatedUserCredits));
     
+  } catch (error) {
+    handleError(error)    
   }
   
 }

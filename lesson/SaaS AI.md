@@ -40,8 +40,6 @@ API Keys
 copy and past .env.local file
 
 ```
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_ZmVhc2libGUtZ29hdC00OS5jbGVyay5hY2NvdW50cy5kZXYk
-CLERK_SECRET_KEY=sk_test_VCS3f7xOS6fvQAjfiv8f4J7ghuh9gxkyFszvkehdoT
 ```
 
 go to Configure =>
@@ -152,8 +150,6 @@ open .env file and past
 ```
 
 # Strip
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_cbiaRw48m7yvm796C2qV3mjf
-STRIPE_SECRET_KEY=sk_test_YG0WuNV1DCyZYuNt8XRDT8Lc
 
 ```
 
@@ -170,7 +166,7 @@ export async function createTransaction(transaction: CreateTransactionParams) {}
 dashboard.stripe.com =>
 Developers => Webhooks => Add an endpoint =>
 
-Endpoint URL = https://imaginify-lac.vercel.app/api/webhooks/stripe
+Endpoint URL = https:///api/webhooks/stripe
 
 Listen to - Events on your account - checked
 
@@ -185,7 +181,7 @@ Add endpoint
 copy Signing secret and past to .env file
 
 ```
-STRIPE_WEBHOOK_SECRET=whsec_wYHvsQLjvLejiudjxKeWYhYr5LxBbC5A
+STRIPE_WEBHOOK_SECRET=
 ```
 
 app => api => webhooks => stripe => route.ts

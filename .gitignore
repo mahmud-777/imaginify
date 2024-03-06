@@ -30,6 +30,7 @@ yarn-error.log*
 .env
 
 lesson
+"SaaS AI.md"
 # vercel
 .vercel
 
